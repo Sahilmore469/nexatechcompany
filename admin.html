@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard – NexaTech</title>
+
+  <!-- AUTH GUARD -->
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "admin-login.html";
+    }
+  </script>
+
+ 
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="admin-header">
+  <div class="logo">
+    <img src="https://img.freepik.com/premium-vector/typographic-logo-nexatech-isolated-vector-illustration_743291-2733.jpg" alt="NexaTech Logo">
+    <span>NexaTech Admin</span>
+  </div>
+
+  <nav>
+    <a href="admin.html">Dashboard</a>
+    <a href="#" id="logoutBtn">Logout</a>
+  </nav>
+</header>
+
+<section class="section admin-section">
+  <h2>Customer Inquiries</h2>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="inquiryTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<script src="admin.js"></script>
+
+<script>
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = "admin-login.html";
+});
+</script>
+
+
+</body>
+</html>
